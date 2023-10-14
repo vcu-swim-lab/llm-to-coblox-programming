@@ -118,6 +118,36 @@ Blockly.defineBlocksWithJsonArray([
         "helpUrl": "",
         "extensions": []
     },
+    /* drag block */
+    {
+        "type": "drag_block",
+        "message0": "Drag %1 to %2",
+        "args0": [
+            {
+                "type": "field_dropdown",
+                "name": "ITEM",
+                "options": [
+                    ["Item A", "item_a"],
+                    ["Item B", "item_b"],
+                    ["Item C", "item_c"]
+                ]
+            },
+            {
+                "type": "field_dropdown",
+                "name": "DESTINATION",
+                "options": [
+                    ["Destination X", "dest_x"],
+                    ["Destination Y", "dest_y"],
+                    ["Destination Z", "dest_z"]
+                ]
+            }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 160,
+        "tooltip": "Drag an item to a destination.",
+        "helpUrl": ""
+    }
 ]);
 
 const toolbox = {
@@ -158,6 +188,10 @@ const toolbox = {
             "kind": "block",
             "type": "move_to_position"
         },
+         {
+            "kind": "block",
+            "type": "drag_block" 
+        }
     ]
 }
 
