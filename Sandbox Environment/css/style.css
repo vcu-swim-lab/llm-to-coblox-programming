@@ -31,3 +31,16 @@ body {
     background-color: rgb(215, 215, 215);
     border-radius: 5px;
 }
+
+.heading-container {
+    width: 100%;
+}
+
+#left-thing {
+    width: 50%;
+    display: inline;
+}
+
+#right-thing {
+    width: 25%;
+}

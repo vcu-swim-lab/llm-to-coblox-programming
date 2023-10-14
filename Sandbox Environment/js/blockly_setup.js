@@ -118,25 +118,6 @@ Blockly.defineBlocksWithJsonArray([
         "helpUrl": "",
         "extensions": []
     },
-    /* random block */
-    {
-        "type": "release_object",
-        "message0": "%1 Random task",
-        "args0": [
-            {
-                "type": "field_checkbox",
-                "name": "Breakpoint",
-                "checked": false
-            }
-        ],
-        "inputsInline": false,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 120,
-        "tooltip": "",
-        "helpUrl": "",
-        "extensions": []
-    },
 ]);
 
 const toolbox = {
@@ -212,9 +193,12 @@ Blockly.FieldCheckbox.CHECK_CHAR = "✔";
 
 /* Define starting block (root) */
 var startingBlocks = document.getElementById("blocks");
+//THIS IS WHERE BLOCK IS INJECTED
 Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace);
+//console.log(Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace));
 var startingBlock = Blockly.getMainWorkspace().getBlocksByType("custom_start")[0];
 blocklyWorkspace.centerOnBlock(startingBlock.id);
+startingBlock.conn
 startingBlock.setDeletable(false);
 
 /* Define workspace buttons callbacks */

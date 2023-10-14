@@ -20,7 +20,10 @@
     <div class="container-fluid">
         <div class="row">
             <h1>Sandbox</h1>
-            <p>Use this space as a playground!</p>
+            <div class="heading-container">
+                <p id="left-thing">Use this space as a playground!</p>
+                <button id="right-thing" onclick="voiceToText()">Speech to Text</button>
+            </div>
         </div>
         <div class="row">
             <div class="language col-md-8 col-sm-12">
@@ -111,6 +114,7 @@
     <script src="js/bootstrap_setup.js"></script>
     <script src="js/phaser_setup.js"></script>
     <script src="js/blockly_setup.js"></script>
+    <script src="js/langchain_setup.js"></script>
 </body>
 
 </html>
