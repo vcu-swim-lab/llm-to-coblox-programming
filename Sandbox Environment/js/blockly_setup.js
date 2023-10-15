@@ -197,6 +197,26 @@ var startingBlocks = document.getElementById("blocks");
 Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace);
 //console.log(Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace));
 var startingBlock = Blockly.getMainWorkspace().getBlocksByType("custom_start")[0];
+
+/* TESTING - Stephen Nocera */
+
+var nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[0];
+var prevBlock = startingBlock;
+nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
+
+prevBlock = nextBlock;
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
+nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
+
+prevBlock = nextBlock;
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[2];
+nextBlock.setFieldValue("Test3", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
+
+/* END TESTING */
+
 blocklyWorkspace.centerOnBlock(startingBlock.id);
 startingBlock.conn
 startingBlock.setDeletable(false);
