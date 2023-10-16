@@ -188,9 +188,9 @@ const toolbox = {
             "kind": "block",
             "type": "move_to_position"
         },
-         {
+        {
             "kind": "block",
-            "type": "drag_block" 
+            "type": "drag_block"
         }
     ]
 }
@@ -240,13 +240,13 @@ nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
 prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
 prevBlock = nextBlock;
-nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
-nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("pick_object")[0];
+//nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
 prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
 prevBlock = nextBlock;
-nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[2];
-nextBlock.setFieldValue("Test3", "DROPDOWN_OPTIONS");
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
+nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
 prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
 /* END TESTING */

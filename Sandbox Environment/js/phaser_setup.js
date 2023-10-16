@@ -29,7 +29,7 @@ class RobotScene extends Phaser.Scene {
         var markersLayer = map.createLayer('markers', tileset);
 
         /* Boxes settings */
-        this.boxA = this.add.sprite(1600, 1600, 'boxes', 5);
+        this.boxA = this.physics.add.sprite(1600, 1600, 'boxes', 5);
         this.boxB = this.physics.add.sprite(800, 900, 'boxes', 6);
         this.boxC = this.physics.add.sprite(1300, 1850, 'boxes', 7);
         this.boxD = this.physics.add.sprite(700, 200, 'boxes', 8);

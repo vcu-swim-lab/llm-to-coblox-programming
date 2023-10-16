@@ -14,7 +14,7 @@ In the example below, "HOME_POSITION" is the language-neutral key from Blockly,
 and [0, 0] the coordinates in Phaser. */
 const savedCoordinates = new Map();
 savedCoordinates.set("Home", [1024, 1024])
-savedCoordinates.set("Test", [424, 424])
+savedCoordinates.set("Test", [1600, 1600])
 savedCoordinates.set("Test2", [124, 124])
 savedCoordinates.set("Test3", [124, 924])
 
