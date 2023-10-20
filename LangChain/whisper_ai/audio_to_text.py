@@ -4,11 +4,9 @@ import sounddevice as sd
 import numpy as np
 import wavio
 
-
 OPENAI_API_KEY = 'API KEY'
 
-# function that accesses microphone and records audio; duration is the time length of the audio file, defult is 10 seconds
-def record_audio(filename="output.wav", duration=10, samplerate=44100):
+def record_audio(filename="output.wav", duration=15, samplerate=44100):
     # Capture the audio
     print(f"Recording for {duration} seconds...")
 
@@ -26,7 +24,7 @@ def record_audio(filename="output.wav", duration=10, samplerate=44100):
 if __name__ == "__main__":
     filepath = record_audio()
     print(f"File saved at: {filepath}")
- 
+
     audio_file = open(filepath,"rb")
 
     openai.api_key = OPENAI_API_KEY
@@ -34,9 +32,20 @@ if __name__ == "__main__":
     transcript = openai.Audio.translate("whisper-1",audio_file)
     user_transcript = transcript["text"]
 
-    chat_model = ChatOpenAI(
+    voice_template = user_transcript
+
+    template = f"""
+                Consider you're an assistant robot, your job is to locate, pick up, move, and release objects to specific coordinates.
+                {voice_template}
+                These are methods that you're provided with: locate_object(obj_name): returns a X,Y,Z tuple representing the location of the desired object defined by string "obj_name";
+                move_location(X,Y,Z): moves the robots hands to a specific X,Y,Z location in space. Returns nothing;
+                grab_object(obj_name): picks a particular object defined by “obj_name”. Returns nothing;
+                place_object(obj_name): releases the object defined by “obj_name”. Returns nothing;
+    """
+
+    llm = ChatOpenAI(
         temperature = 1,
         openai_api_key = OPENAI_API_KEY
     )
-
-    print(chat_model.predict(user_transcript))
+    
+    print(llm.predict(template))
