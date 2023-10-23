@@ -8,4 +8,4 @@ recording.stream().pipe(file)
 
 setTimeout(() => {
     recording.stop()
-  }, 5000)
+  }, 5000) // 5 seconds
