@@ -1,0 +1,8 @@
+npm install node-record-lpcm16
+npm install fs
+
+# for macOS: brew install sox
+# for linux: sudo apt-get install sox
+sox
+
+
