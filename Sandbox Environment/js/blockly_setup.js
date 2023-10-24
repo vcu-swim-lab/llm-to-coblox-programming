@@ -1,4 +1,5 @@
 /* "Extensions are functions that run on each block of a given type as the block is created." - Blockly */
+
 /* This extension fill the movement position dropdown with default field values. */
 Blockly.Extensions.register('move_block_created',
     function () {
@@ -248,8 +249,9 @@ prevBlock = nextBlock;
 nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
 nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
 prevBlock.nextConnection.connect(nextBlock.previousConnection);
-
 /* END TESTING */
+
+console.log(Blockly.Xml.workspaceToDom(blocklyWorkspace).innerHTML);
 
 blocklyWorkspace.centerOnBlock(startingBlock.id);
 startingBlock.conn
