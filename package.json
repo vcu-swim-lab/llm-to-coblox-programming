@@ -1,0 +1,14 @@
+{
+  "name": "llm-to-coblox-programming",
+  "version": "1.0.0",
+  "description": "Handling all of the dependencies for llm to robot project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen Nocera",
+  "license": "ISC",
+  "dependencies": {
+    "blockly": "^10.2.2"
+  }
+}

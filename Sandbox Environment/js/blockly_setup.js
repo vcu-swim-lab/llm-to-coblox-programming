@@ -122,7 +122,7 @@ Blockly.defineBlocksWithJsonArray([
     /* drag block */
     {
         "type": "drag_block",
-        "message0": "Drag %1 to %2",
+        "message0": "Drag %1 tooooo %2",
         "args0": [
             {
                 "type": "field_dropdown",
