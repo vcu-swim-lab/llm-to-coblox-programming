@@ -8,24 +8,24 @@ const recording = recorder.record();
 recording.stream().pipe(file);
 
 setTimeout(async () => {
-    recording.stop();
+  recording.stop();
 
-    // Wait for a bit to ensure the file write is completed
-    setTimeout(async () => {
-        try {
-            await audioConvert();
-            
-            // Delete the temporary WAV file after transcription
-            fs.unlinkSync("test.wav");
-        } catch (error) {
-            console.error("Error during audio conversion:", error);
-        }
-    }, 1000); // Wait 1 second
+  // Wait for a bit to ensure the file write is completed
+  setTimeout(async () => {
+    try {
+      await audioConvert();
+
+      // Delete the temporary WAV file after transcription
+      fs.unlinkSync("test.wav");
+    } catch (error) {
+      console.error("Error during audio conversion:", error);
+    }
+  }, 1000); // Wait 1 second
 
 }, 5000); // 5 seconds
 
 const openai = new OpenAI({
-  apiKey: "API KEY" 
+  apiKey: "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"
 });
 
 const audioConvert = async () => {

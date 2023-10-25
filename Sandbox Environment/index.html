@@ -56,17 +56,13 @@
         </div>
     </div>
 
-    <button id="right-thing" onclick="voiceToText()">Speech to Text</button>
-    <div id="text-to-speech"></div>
-
     <xml id="toolbox" style="display: none">
     </xml>
 
     <xml id="blocks" style="display: none">
-        <block type="custom_start" id="START" x="-250" y="-150"></block>
-        <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
-        <block type="pick_object" id="POSITION" x="-250" y="-100"></block>
-        <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
+        <block type="custom_start" id="START" x="-250" y="-150">
+
+        </block>
     </xml>
 
     <!-- Modal - Delete positions -->
@@ -115,11 +111,33 @@
         </div>
     </div>
 
+    <!-- Modal - Speech Input -->
+    <div class="modal" id="speech-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="modal-body" id="recording-speech">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="record-btn">Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
     <script src="js/initial_setup.js"></script>
     <script src="js/bootstrap_setup.js"></script>
     <script src="js/phaser_setup.js"></script>
-    <script src="js/blockly_setup.js"></script>
     <script src="js/langchain_setup.js"></script>
+    <script src="js/blockly_setup.js"></script>
 </body>
 
 </html>

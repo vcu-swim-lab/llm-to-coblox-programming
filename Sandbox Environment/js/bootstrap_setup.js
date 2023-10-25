@@ -1,5 +1,6 @@
 const managePositionsModal = new bootstrap.Modal(document.getElementById("delete-positions-modal"));
 const createPositionModal = new bootstrap.Modal(document.getElementById("create-position-modal"));
+const speechToTextModal = new bootstrap.Modal(document.getElementById("speech-modal"));
 
 var createPositionButton = document.getElementById("create-position-button");
 createPositionButton.addEventListener("click", requestNewPosition);
@@ -10,8 +11,15 @@ showPositionsButton.addEventListener("click", toggleShowPositions);
 var showDirectionsButton = document.getElementById("show-directions-button");
 showDirectionsButton.addEventListener("click", toggleShowDirections);
 
+var recordButton = document.getElementById("record-btn");
+recordButton.addEventListener("click", startRecording);
+
 function loadCreatePositionModal() {
     createPositionModal.show();
+}
+
+function loadSpeechToText() {
+    speechToTextModal.show();
 }
 
 function loadPositionsForRemoval() {
@@ -105,4 +113,11 @@ function toggleShowDirections() {
         currentScene.showArrows = true;
         currentScene.drawArrows();
     }
+}
+
+function startRecording() {
+    var bodyText = document.getElementById("recording-speech");
+    bodyText.innerHTML = "This is your speech";
+    convertOutputToDom();
+    speechToTextModal.hide();
 }
