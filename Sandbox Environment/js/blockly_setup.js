@@ -1,3 +1,8 @@
+import Blockly from 'blockly'
+import { game } from './phaser_setup'
+import { loadCreatePositionModal } from './bootstrap_setup'
+import { loadPositionsForRemoval } from './bootstrap_setup'
+import { phaserSceneName, savedVariables, savedCoordinates } from './initial_setup';
 /* "Extensions are functions that run on each block of a given type as the block is created." - Blockly */
 
 /* This extension fill the movement position dropdown with default field values. */
@@ -23,7 +28,7 @@ function updateDropdownOptions(dropdownField) {
     // Push unsaved positions into dropdown options
     // TODO: Optmize this verification to reduce complexity
     for (let [name, key] of savedVariables) {
-        value_exists = false;
+        let value_exists = false;
 
         for (let [optionName, optionKey] of dropdownOptions) {
             // If position already exists in dropdown options, break */
@@ -41,7 +46,7 @@ function updateDropdownOptions(dropdownField) {
     dropdownField.menuGenerator_ = dropdownOptions;
 }
 
-function updateBlocklyBlocks() {
+export function updateBlocklyBlocks() {
     Blockly.getMainWorkspace().getBlocksByType("move_to_position").forEach(function (block) {
         var dropdownField = block.getField('DROPDOWN_OPTIONS');
         updateDropdownOptions(dropdownField);
@@ -197,7 +202,7 @@ const toolbox = {
 }
 
 const blocklyDiv = document.getElementById('blockly-workspace');
-const blocklyWorkspace = Blockly.inject(blocklyDiv, {
+export const blocklyWorkspace = Blockly.inject(blocklyDiv, {
     toolbox: toolbox, zoom:
     {
         controls: true,
@@ -263,6 +268,7 @@ blocklyWorkspace.registerButtonCallback("create-position", loadCreatePositionMod
 blocklyWorkspace.registerButtonCallback("delete-positions", loadPositionsForRemoval);
 
 function executeBlocklyCode() {
+    console.log("executing")
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var currentScene = game.scene.getScene(phaserSceneName);
@@ -273,7 +279,7 @@ function executeBlocklyCode() {
     }
 }
 
-function getBlocklyPositions() {
+export function getBlocklyPositions() {
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var movementBlocks = [];
@@ -294,7 +300,7 @@ function getBlocklyPositions() {
     }
 }
 
-function removeBlocksWithPosition(removedKey) {
+export function removeBlocksWithPosition(removedKey) {
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var movementBlocks = [];

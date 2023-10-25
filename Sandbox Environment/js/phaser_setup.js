@@ -1,4 +1,8 @@
-class RobotScene extends Phaser.Scene {
+import Phaser from 'phaser'
+import { blocklyWorkspace, getBlocklyPositions } from './blockly_setup'
+import { phaserSceneName, savedCoordinates } from './initial_setup';
+
+export class RobotScene extends Phaser.Scene {
     constructor() {
         super(phaserSceneName);
         this.isMouseDown = false;
@@ -306,4 +310,4 @@ var config = {
     },
 };
 
-var game = new Phaser.Game(config);
+export var game = new Phaser.Game(config);
