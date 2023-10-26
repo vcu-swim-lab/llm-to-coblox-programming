@@ -1,5 +1,7 @@
 npm install node-record-lpcm16
 npm install fs
+npm install langchain
+npm install axios
 
 # for macOS: brew install sox
 # for linux: sudo apt-get install sox
