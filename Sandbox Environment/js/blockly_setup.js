@@ -3,6 +3,7 @@ import { game } from './phaser_setup'
 import { loadCreatePositionModal } from './bootstrap_setup'
 import { loadPositionsForRemoval } from './bootstrap_setup'
 import { phaserSceneName, savedVariables, savedCoordinates } from './initial_setup';
+import { voiceToText } from './langchain_setup';
 /* "Extensions are functions that run on each block of a given type as the block is created." - Blockly */
 
 /* This extension fill the movement position dropdown with default field values. */
@@ -179,6 +180,11 @@ const toolbox = {
             "callbackKey": "delete-positions",
         },
         {
+            "kind": "button",
+            "text": "Speech to text",
+            "callbackKey": "speech-to-text",
+        },
+        {
             "kind": "label",
             "text": "Blocks",
         },
@@ -266,6 +272,7 @@ startingBlock.setDeletable(false);
 blocklyWorkspace.registerButtonCallback("run-program", executeBlocklyCode);
 blocklyWorkspace.registerButtonCallback("create-position", loadCreatePositionModal);
 blocklyWorkspace.registerButtonCallback("delete-positions", loadPositionsForRemoval);
+blocklyWorkspace.registerButtonCallback("speech-to-text", voiceToText);
 
 function executeBlocklyCode() {
     console.log("executing")
