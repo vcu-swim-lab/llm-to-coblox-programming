@@ -11,6 +11,7 @@
   "dependencies": {
     "blockly": "^10.2.2",
     "bootstrap": "^5.3.2",
+    "langchain": "^0.0.177",
     "phaser": "^3.60.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
