@@ -16,6 +16,8 @@ const chat = new ChatOpenAI({
     temperature: 0.2
 });
 
+const outputArea = document.getElementById("chat-output");
+
 export function speechtt() {
     let speech = true;
     window.SpeechRecognition = window.webkitSpeechRecognition;
@@ -28,7 +30,9 @@ export function speechtt() {
         code.innerHTML = transcript;
         audio_transcript = transcript;
         recognition.stop();
+        speech=false;
         sendTranscriptToAI();
+        outputArea.innerHTML = "Thinking..."
     })
     if (speech) {
         recognition.start();
@@ -47,7 +51,6 @@ async function sendTranscriptToAI() {
         ],
     ]);
 
-    const outputArea = document.getElementById("chat-output");
     outputArea.innerHTML = response3.generations[0][0].text;
 
     console.log(response3.generations[0][0].text)
