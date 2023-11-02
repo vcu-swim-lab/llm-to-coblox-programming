@@ -247,20 +247,20 @@ var startingBlock = Blockly.getMainWorkspace().getBlocksByType("custom_start")[0
 
 /* TESTING - Stephen Nocera */
 
-// var nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[0];
-// var prevBlock = startingBlock;
-// nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
-// prevBlock.nextConnection.connect(nextBlock.previousConnection);
+var nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[0];
+var prevBlock = startingBlock;
+nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
-// prevBlock = nextBlock;
-// nextBlock = Blockly.getMainWorkspace().getBlocksByType("pick_object")[0];
-// //nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
-// prevBlock.nextConnection.connect(nextBlock.previousConnection);
+prevBlock = nextBlock;
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("pick_object")[0];
+//nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
-// prevBlock = nextBlock;
-// nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
-// nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
-// prevBlock.nextConnection.connect(nextBlock.previousConnection);
+prevBlock = nextBlock;
+nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
+nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
+prevBlock.nextConnection.connect(nextBlock.previousConnection);
 /* END TESTING */
 
 console.log(Blockly.Xml.workspaceToDom(blocklyWorkspace).innerHTML);

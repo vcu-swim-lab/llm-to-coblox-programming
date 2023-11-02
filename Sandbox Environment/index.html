@@ -61,9 +61,10 @@
     </xml>
 
     <xml id="blocks" style="display: none">
-        <block type="custom_start" id="START" x="-250" y="-150">
-
-        </block>
+        <block type="custom_start" id="START" x="-250" y="-150"></block>
+        <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
+        <block type="pick_object" id="POSITION" x="-250" y="-100"></block>
+        <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
     </xml>
 
     <!-- Modal - Delete positions -->
@@ -121,7 +122,11 @@
                 </div>
                 <div class="modal-body">
                     <form class="row g-3">
+                        <h3>Input:</h3>
                         <div class="col-12" , id="recording-conversion">
+                        </div>
+                        <h3>Output:</h3>
+                        <div class="col-12" , id="chat-output">
                         </div>
                     </form>
                 </div>
@@ -129,7 +134,6 @@
                     <div class="container">
                         <div class="row">
                             <button type="button" id="start-recording-btn" class="btn">Record</button>
-                            <button type="button" id="stop-recording-btn" class="btn">Stop</button>
                         </div>
                     </div>
                 </div>

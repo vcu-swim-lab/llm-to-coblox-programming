@@ -47,5 +47,8 @@ async function sendTranscriptToAI() {
         ],
     ]);
 
+    const outputArea = document.getElementById("chat-output");
+    outputArea.innerHTML = response3.generations[0][0].text;
+
     console.log(response3.generations[0][0].text)
 }
