@@ -1,3 +1,9 @@
+import Blockly from 'blockly'
+import { game } from './phaser_setup'
+import { loadCreatePositionModal } from './bootstrap_setup'
+import { loadPositionsForRemoval } from './bootstrap_setup'
+import { phaserSceneName, savedVariables, savedCoordinates } from './initial_setup';
+import { voiceToText } from './langchain_setup';
 /* "Extensions are functions that run on each block of a given type as the block is created." - Blockly */
 
 /* This extension fill the movement position dropdown with default field values. */
@@ -23,7 +29,7 @@ function updateDropdownOptions(dropdownField) {
     // Push unsaved positions into dropdown options
     // TODO: Optmize this verification to reduce complexity
     for (let [name, key] of savedVariables) {
-        value_exists = false;
+        let value_exists = false;
 
         for (let [optionName, optionKey] of dropdownOptions) {
             // If position already exists in dropdown options, break */
@@ -41,7 +47,7 @@ function updateDropdownOptions(dropdownField) {
     dropdownField.menuGenerator_ = dropdownOptions;
 }
 
-function updateBlocklyBlocks() {
+export function updateBlocklyBlocks() {
     Blockly.getMainWorkspace().getBlocksByType("move_to_position").forEach(function (block) {
         var dropdownField = block.getField('DROPDOWN_OPTIONS');
         updateDropdownOptions(dropdownField);
@@ -122,7 +128,7 @@ Blockly.defineBlocksWithJsonArray([
     /* drag block */
     {
         "type": "drag_block",
-        "message0": "Drag %1 to %2",
+        "message0": "Drag %1 tooooo %2",
         "args0": [
             {
                 "type": "field_dropdown",
@@ -175,8 +181,8 @@ const toolbox = {
         },
         {
             "kind": "button",
-            "text": "Speech to Text",
-            "callbackKey": "record-speech",
+            "text": "Speech to text",
+            "callbackKey": "speech-to-text",
         },
         {
             "kind": "label",
@@ -202,7 +208,7 @@ const toolbox = {
 }
 
 const blocklyDiv = document.getElementById('blockly-workspace');
-const blocklyWorkspace = Blockly.inject(blocklyDiv, {
+export const blocklyWorkspace = Blockly.inject(blocklyDiv, {
     toolbox: toolbox, zoom:
     {
         controls: true,
@@ -267,9 +273,10 @@ startingBlock.setDeletable(false);
 blocklyWorkspace.registerButtonCallback("run-program", executeBlocklyCode);
 blocklyWorkspace.registerButtonCallback("create-position", loadCreatePositionModal);
 blocklyWorkspace.registerButtonCallback("delete-positions", loadPositionsForRemoval);
-blocklyWorkspace.registerButtonCallback("record-speech", voiceToText);
+blocklyWorkspace.registerButtonCallback("speech-to-text", voiceToText);
 
 function executeBlocklyCode() {
+    console.log("executing")
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var currentScene = game.scene.getScene(phaserSceneName);
@@ -280,7 +287,7 @@ function executeBlocklyCode() {
     }
 }
 
-function getBlocklyPositions() {
+export function getBlocklyPositions() {
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var movementBlocks = [];
@@ -301,7 +308,7 @@ function getBlocklyPositions() {
     }
 }
 
-function removeBlocksWithPosition(removedKey) {
+export function removeBlocksWithPosition(removedKey) {
     if (startingBlock) {
         var attachedBlocks = startingBlock.getDescendants();
         var movementBlocks = [];

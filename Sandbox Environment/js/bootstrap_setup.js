@@ -1,6 +1,12 @@
-const managePositionsModal = new bootstrap.Modal(document.getElementById("delete-positions-modal"));
-const createPositionModal = new bootstrap.Modal(document.getElementById("create-position-modal"));
-const speechToTextModal = new bootstrap.Modal(document.getElementById("speech-modal"));
+//import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import bootstrap from '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import { game } from './phaser_setup'
+import { removeBlocksWithPosition } from './blockly_setup.js';
+import { createNewPosition, savedCoordinates, savedVariables, phaserSceneName } from './initial_setup.js';
+
+export const managePositionsModal = bootstrap.Modal.getOrCreateInstance('#delete-positions-modal');
+export const createPositionModal = bootstrap.Modal.getOrCreateInstance('#create-position-modal');
+export const speechTT = bootstrap.Modal.getOrCreateInstance('#start-recording-modal');
 
 var createPositionButton = document.getElementById("create-position-button");
 createPositionButton.addEventListener("click", requestNewPosition);
@@ -11,18 +17,11 @@ showPositionsButton.addEventListener("click", toggleShowPositions);
 var showDirectionsButton = document.getElementById("show-directions-button");
 showDirectionsButton.addEventListener("click", toggleShowDirections);
 
-var recordButton = document.getElementById("record-btn");
-recordButton.addEventListener("click", startRecording);
-
-function loadCreatePositionModal() {
+export function loadCreatePositionModal() {
     createPositionModal.show();
 }
 
-function loadSpeechToText() {
-    speechToTextModal.show();
-}
-
-function loadPositionsForRemoval() {
+export function loadPositionsForRemoval() {
     managePositionsModal.show();
     var positionsContainer = document.getElementById("delete-positions-container")
     var htmlContent = "";

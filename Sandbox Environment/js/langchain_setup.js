@@ -1,52 +1,17 @@
-function voiceToText() {
-    loadSpeechToText();
-    //convertOutputToDom();
+import { speechTT } from "./bootstrap_setup";
+import { speechtt } from "./record_init";
+
+export function voiceToText() {
+    console.log("Converting voice to text!");
+    speechTT.show();
 }
 
-let calls = [function () { move_robot("Test") },
-function () { pick_up_object() },
-function () { move_robot("Home") },
-function () { release_object() }
-];
+var startRecordButton = document.getElementById("start-recording-btn");
+startRecordButton.addEventListener("click", startRecordingSpeech);
 
-let currBlock, prevBlock;
+var speechTranscript = document.getElementById("recording-conversion");
 
-function convertOutputToDom() {
-
-    calls.push(function () { move_robot("Test2") });
-
-    //get starting block
-    prevBlock = Blockly.getMainWorkspace().getBlocksByType("custom_start")[0];
-
-    for (let i = 0; i < calls.length; i++) {
-        calls[i]();
-
-    }
+function startRecordingSpeech() {
+    speechtt();
+    speechTranscript.innerHTML = "Recording...";
 }
-
-function move_robot(location) {
-    var currBlock = blocklyWorkspace.newBlock("move_to_position");
-    currBlock.setFieldValue(location, "DROPDOWN_OPTIONS");
-    currBlock.initSvg();
-    currBlock.render();
-    currBlock.previousConnection.connect(prevBlock.nextConnection);
-    prevBlock = currBlock;
-
-}
-
-function pick_up_object() {
-    var currBlock = blocklyWorkspace.newBlock("pick_object");
-    currBlock.initSvg();
-    currBlock.render();
-    currBlock.previousConnection.connect(prevBlock.nextConnection);
-    prevBlock = currBlock;
-}
-
-function release_object() {
-    var currBlock = blocklyWorkspace.newBlock("release_object");
-    currBlock.initSvg();
-    currBlock.render();
-    currBlock.previousConnection.connect(prevBlock.nextConnection);
-    prevBlock = currBlock;
-}
-

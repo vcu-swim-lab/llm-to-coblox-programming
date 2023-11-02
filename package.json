@@ -1,10 +1,19 @@
 {
-  "type":"module",
+  "name": "llm-to-coblox-programming",
+  "version": "1.0.0",
+  "description": "Handling all of the dependencies for llm to robot project",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "Stephen Nocera",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^1.5.1",
-    "fs": "^0.0.1-security",
-    "langchain": "^0.0.173",
-    "node-record-lpcm16": "^1.0.1",
-    "openai": "^4.14.0"
+    "blockly": "^10.2.2",
+    "bootstrap": "^5.3.2",
+    "langchain": "^0.0.177",
+    "phaser": "^3.60.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

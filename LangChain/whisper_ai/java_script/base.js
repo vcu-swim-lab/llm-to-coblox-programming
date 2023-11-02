@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as fs from 'fs';
 import recorder from 'node-record-lpcm16';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import {PromptTemplate} from "langchain/prompts";
+import { PromptTemplate } from "langchain/prompts";
 
 
 // Creating test.wav audio file
@@ -18,7 +18,7 @@ const template = "Consider you're an assistant robot, your job is to locate, pic
     \nplace_object(obj_name): releases the object defined by “obj_name”. Returns nothing;";
 
 const promptTemmplate = new PromptTemplate({
-    template:template,
+    template: template,
     inputVariables: ["prompt"],
 });
 
@@ -30,45 +30,40 @@ recording.stream().pipe(file);
 
 // Connecting to Chat model with API key
 const chat = new ChatOpenAI({
-    openAIApiKey:"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",
+    openAIApiKey: "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",
     temperature: 1
 });
 
 setTimeout(async () => {
-  recording.stop();
+    recording.stop();
 
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
-    audio_transcript = await transcribe(fs.createReadStream("test.wav")); //transcript of audio
+    try {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+        audio_transcript = await transcribe(fs.createReadStream("test.wav")); //transcript of audio
 
-    const formattedTemplate = await promptTemmplate.format({
-        prompt: audio_transcript
-    });
+        const formattedTemplate = await promptTemmplate.format({
+            prompt: audio_transcript
+        });
 
-    const response = await chat.predict(formattedTemplate);
+        const response = await chat.predict(formattedTemplate);
 
-    console.log(response); // AI generates response here
+        console.log(response); // AI generates response here
 
-    // Delete the temporary WAV file after transcription
-    fs.unlinkSync("test.wav");
-  } catch (error) {
-    console.error("Error during audio conversion:", error);
-  }
+        // Delete the temporary WAV file after transcription
+        fs.unlinkSync("test.wav");
+    } catch (error) {
+        console.error("Error during audio conversion:", error);
+    }
 }, 15000); // 15 seconds
 
-async function transcribe(file) {
-    const response = await axios.post(  // connects to the openai audio transcriptions service
-        'https://api.openai.com/v1/audio/transcriptions',
-        {
-            file,
-            model: "whisper-1"
-        },
-        {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                Authorization: 'Bearer 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'
-            }
-        }
-    );
-    return response.data.text;
+const openai = new OpenAI({
+    apiKey: "API KEY"
+});
+
+const audioConvert = async () => {
+    const transcription = await openai.audio.transcriptions.create({
+        file: fs.createReadStream("test.wav"),
+        model: "whisper-1"
+    });
+    console.log(transcription);
 }
