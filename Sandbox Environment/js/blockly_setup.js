@@ -1,4 +1,4 @@
-import Blockly from 'blockly'
+import Blockly, { Block } from 'blockly'
 import { game } from './phaser_setup'
 import { loadCreatePositionModal } from './bootstrap_setup'
 import { loadPositionsForRemoval } from './bootstrap_setup'
@@ -126,35 +126,6 @@ Blockly.defineBlocksWithJsonArray([
         "extensions": []
     },
     /* drag block */
-    {
-        "type": "drag_block",
-        "message0": "Drag %1 tooooo %2",
-        "args0": [
-            {
-                "type": "field_dropdown",
-                "name": "ITEM",
-                "options": [
-                    ["Item A", "item_a"],
-                    ["Item B", "item_b"],
-                    ["Item C", "item_c"]
-                ]
-            },
-            {
-                "type": "field_dropdown",
-                "name": "DESTINATION",
-                "options": [
-                    ["Destination X", "dest_x"],
-                    ["Destination Y", "dest_y"],
-                    ["Destination Z", "dest_z"]
-                ]
-            }
-        ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 160,
-        "tooltip": "Drag an item to a destination.",
-        "helpUrl": ""
-    }
 ]);
 
 const toolbox = {
@@ -181,7 +152,7 @@ const toolbox = {
         },
         {
             "kind": "button",
-            "text": "Speech to text",
+            "text": "Record Robot Instructions",
             "callbackKey": "speech-to-text",
         },
         {
@@ -200,12 +171,29 @@ const toolbox = {
             "kind": "block",
             "type": "move_to_position"
         },
-        {
-            "kind": "block",
-            "type": "drag_block"
-        }
     ]
 }
+const secondDiv = document.getElementById('second-workspace');
+const secondWorkspace = Blockly.inject(secondDiv, {
+    zoom:
+    {
+        controls: true,
+        startScale: 1.25,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2,
+        pinch: true
+    },
+    move: {
+        scrollbars: {
+            horizontal: true,
+            vertical: true
+        },
+        drag: true,
+        wheel: false
+    },
+    trashcan: true
+});
 
 const blocklyDiv = document.getElementById('blockly-workspace');
 export const blocklyWorkspace = Blockly.inject(blocklyDiv, {
@@ -244,29 +232,31 @@ Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace);
 //console.log(Blockly.Xml.domToWorkspace(startingBlocks, blocklyWorkspace));
 var startingBlock = Blockly.getMainWorkspace().getBlocksByType("custom_start")[0];
 
+const parser = new DOMParser();
+
+
 
 /* TESTING - Stephen Nocera */
 
-var nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[0];
-var prevBlock = startingBlock;
-nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
-prevBlock.nextConnection.connect(nextBlock.previousConnection);
+// var nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[0];
+// var prevBlock = startingBlock;
+// nextBlock.setFieldValue("Test", "DROPDOWN_OPTIONS");
+// prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
-prevBlock = nextBlock;
-nextBlock = Blockly.getMainWorkspace().getBlocksByType("pick_object")[0];
-//nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
-prevBlock.nextConnection.connect(nextBlock.previousConnection);
+// prevBlock = nextBlock;
+// nextBlock = Blockly.getMainWorkspace().getBlocksByType("pick_object")[0];
+// //nextBlock.setFieldValue("Test2", "DROPDOWN_OPTIONS");
+// prevBlock.nextConnection.connect(nextBlock.previousConnection);
 
-prevBlock = nextBlock;
-nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
-nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
-prevBlock.nextConnection.connect(nextBlock.previousConnection);
+// prevBlock = nextBlock;
+// nextBlock = Blockly.getMainWorkspace().getBlocksByType("move_to_position")[1];
+// nextBlock.setFieldValue("Home", "DROPDOWN_OPTIONS");
+// prevBlock.nextConnection.connect(nextBlock.previousConnection);
 /* END TESTING */
 
 console.log(Blockly.Xml.workspaceToDom(blocklyWorkspace).innerHTML);
 
 blocklyWorkspace.centerOnBlock(startingBlock.id);
-startingBlock.conn
 startingBlock.setDeletable(false);
 
 /* Define workspace buttons callbacks */
@@ -342,4 +332,29 @@ function onBlockChange(event) {
             currentScene.drawArrows();
         }
     }
+}
+
+export function injectXML(xmlCode) {
+
+    secondWorkspace.clear();
+
+    let xmlDoc = parser.parseFromString(xmlCode, 'text/xml');
+    Blockly.Xml.domToWorkspace(xmlDoc, secondWorkspace);
+
+    let currBlocks = secondWorkspace.getAllBlocks();
+    secondWorkspace.centerOnBlock(currBlocks[0].id);
+
+
+    for (let i = 0; i < currBlocks.length; i++) {
+        console.log(currBlocks[i].getSvgRoot());
+    }
+}
+
+const yesButton = document.getElementById("yes-button");
+yesButton.addEventListener('click', moveFromPreviewToMain);
+
+export function moveFromPreviewToMain() {
+    let secondXml = Blockly.Xml.workspaceToDom(secondWorkspace);
+    Blockly.Xml.domToWorkspace(secondXml, blocklyWorkspace);
+    secondWorkspace.clear();
 }

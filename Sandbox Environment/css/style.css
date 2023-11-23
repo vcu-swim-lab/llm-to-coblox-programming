@@ -11,6 +11,12 @@ body {
     height: 75vh;
 }
 
+.blockly-workspace-preview {
+    min-height: 200px;
+    height: 300px;
+    width: 300px
+}
+
 /* Blockly workspace */
 .injectionDiv {
     border-radius: 0.5rem;
@@ -36,11 +42,4 @@ body {
     width: 100%;
 }
 
-#left-thing {
-    width: 50%;
-    display: inline;
-}
-
-#right-thing {
-    width: 25%;
-}
+.preview-area {}

@@ -57,14 +57,24 @@
         </div>
     </div>
 
+    <div class="preview-area">
+        <div id="second-workspace" class="blockly-workspace-preview">
+
+            <p>Would you like to implement this code to the main workspace?</p>
+            <button id="yes-button">Yes</button>
+            <button>No</button>
+        </div>
+    </div>
+
     <xml id="toolbox" style="display: none">
     </xml>
 
     <xml id="blocks" style="display: none">
         <block type="custom_start" id="START" x="-250" y="-150"></block>
-        <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
+        <!-- <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
         <block type="pick_object" id="POSITION" x="-250" y="-100"></block>
         <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
+        -->
     </xml>
 
     <!-- Modal - Delete positions -->
@@ -117,19 +127,16 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">What do you want the robot to do?</h5>
+                    <h5 class="modal-title">Record instructions for the robot</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form class="row g-3">
                         <h3>Input:</h3>
-                        <div class="col-12" , id="recording-conversion">
+                        <div class="col-12" id="recording-conversion">
                         </div>
-                        <h3>Output:</h3>
-                        <div class="col-12" , id="chat-output">
-                        </div>
-                    </form>
                 </div>
+                </form>
                 <div class="modal-footer">
                     <div class="container">
                         <div class="row">
