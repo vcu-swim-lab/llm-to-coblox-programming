@@ -1,7 +1,0 @@
-https://docs.google.com/document/d/1CaeBH81K327WAijIPWDVV3Lf6eIFO1Sv44-F0m4OP1M/edit#heading=h.1vqn8racpvrv
-
-https://www.microsoft.com/en-us/research/group/autonomous-systems-group-robotics/articles/chatgpt-for-robotics/
-
-https://www.langchain.com/
-
-https://developers.google.com/blockly
