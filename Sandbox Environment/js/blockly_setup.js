@@ -351,6 +351,7 @@ export function injectXML(xmlCode) {
 }
 
 const yesButton = document.getElementById("yes-button");
+const noButtn = document.getElementById("no-button");
 yesButton.addEventListener('click', moveFromPreviewToMain);
 
 export function moveFromPreviewToMain() {
@@ -358,3 +359,6 @@ export function moveFromPreviewToMain() {
     Blockly.Xml.domToWorkspace(secondXml, blocklyWorkspace);
     secondWorkspace.clear();
 }
+
+
+

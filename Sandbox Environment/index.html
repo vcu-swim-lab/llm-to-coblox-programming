@@ -60,7 +60,7 @@
     <!-- Modal - Delete positions -->
     <div class="modal fade" id="delete-positions-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <div class="modal-content" id="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Delete Positions</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -105,7 +105,7 @@
 
     <div class="modal fade" id="start-recording-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <div class="modal-content" id="modal">
                 <div class="modal-header">
                     <h5 class="modal-title">Record instructions for the robot</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -121,7 +121,6 @@
                     <div class="container">
                         <div class="row">
                             <button type="button" id="start-recording-btn" class="btn btn-primary">Record</button>
-                            <button type="button" id="execute-btn" class="btn btn-primary">Execute</button>
                         </div>
                     </div>
                 </div>
@@ -130,8 +129,8 @@
                         <p>Would you like to implement this code to the main workspace?</p>
                     </div>
                     <div class="preview-buttons">
-                        <button id="yes-button" class="btn btn-success">Yes</button>
-                        <button id="no-button" class="btn btn-danger">No</button>
+                        <button id="yes-button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
+                        <button id="no-button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
             
@@ -150,12 +149,11 @@
     </div>
 
     <!-- <script src="js/initial_setup.js"></script> -->
-    <!-- <script src="js/bootstrap_setup.js"></script> -->
     <!-- <script src="js/phaser_setup.js"></script> -->
     <!-- <script src="js/blockly_setup.js"></script> -->
     <!-- <script src="js/langchain_setup.js"></script> -->
     <script src="../dist/main.js"></script>
-    <script src="./js/show_screen.js"></script>
+    <script src="./js/bootstrap_setup.js"></script>
 </body>
 
 </html>

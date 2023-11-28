@@ -42,50 +42,47 @@ body {
     width: 100%;
 }
 
-/* Hide the preview area initially */
 .preview-area {
-    display: none; /* This hides the preview area */
+    display: flex; 
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
 }
 
-/* Additional styles for centering and presentation */
 .modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 90%;
+    max-width: 900px;
+    margin: auto; 
+    padding: 20px; 
 }
 
+
 .blockly-workspace-preview {
-    margin-top: 20px; /* Add some space above the preview box */
-    border: 1px solid #ccc; /* Give the box a border for visibility */
-    border-radius: 4px; /* Round the corners */
-    /* Adjust width and height as needed */
-    width: 80%; /* Example width */
+    margin-top: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    width: 80%; 
 }
 
 .preview-buttons {
-    width: 100%; /* Take up the full width of the preview area */
+    width: 100%; 
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    position: relative;
 }
 
-/* Style the buttons (Yes and No) */
 #yes-button, #no-button {
-    padding: 10px 25px; /* Add more padding */
-    margin: 0 10px; /* Add space between buttons */
-    font-size: 1rem; /* Increase font size */
+    padding: 10px 25px;
+    margin: 0 10px;
+    font-size: 1rem;
     border-radius: 4px;
     border: none;
     cursor: pointer;
 }
 
-/* Hover effect for buttons */
 #yes-button:hover, #no-button:hover {
-    background-color: #0056b3; /* Darken the button on hover */
+    background-color: #0056b3;
     color: white;
 }
-

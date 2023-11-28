@@ -1,8 +1,4 @@
-# *Your Project Description*
-## *Sponsoring Company or Organization*
-## *Short Project Description*
-## Project Overview
-
+# Project Overview
 
 ## Project Team
 - *Mentor's Name*  - *Company Affliation* - Mentor
