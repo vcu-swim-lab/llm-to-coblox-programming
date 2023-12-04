@@ -175,24 +175,6 @@ const toolbox = {
 }
 const secondDiv = document.getElementById('second-workspace');
 const secondWorkspace = Blockly.inject(secondDiv, {
-    zoom:
-    {
-        controls: true,
-        startScale: 1.25,
-        maxScale: 3,
-        minScale: 0.3,
-        scaleSpeed: 1.2,
-        pinch: true
-    },
-    move: {
-        scrollbars: {
-            horizontal: true,
-            vertical: true
-        },
-        drag: true,
-        wheel: false
-    },
-    trashcan: true
 });
 
 const blocklyDiv = document.getElementById('blockly-workspace');
@@ -343,11 +325,6 @@ export function injectXML(xmlCode) {
 
     let currBlocks = secondWorkspace.getAllBlocks();
     secondWorkspace.centerOnBlock(currBlocks[0].id);
-
-
-    for (let i = 0; i < currBlocks.length; i++) {
-        console.log(currBlocks[i].getSvgRoot());
-    }
 }
 
 const yesButton = document.getElementById("yes-button");
