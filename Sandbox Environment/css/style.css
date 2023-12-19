@@ -43,7 +43,7 @@ body {
 }
 
 .preview-area {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -53,27 +53,28 @@ body {
 .modal-content {
     width: 90%;
     max-width: 900px;
-    margin: auto; 
-    padding: 20px; 
+    margin: auto;
+    padding: 20px;
 }
 
 
 .blockly-workspace-preview {
-    margin-top: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    width: 80%; 
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
 }
 
 .preview-buttons {
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 20px;
     position: relative;
 }
 
-#yes-button, #no-button {
+#yes-button,
+#no-button {
     padding: 10px 25px;
     margin: 0 10px;
     font-size: 1rem;
@@ -82,7 +83,8 @@ body {
     cursor: pointer;
 }
 
-#yes-button:hover, #no-button:hover {
+#yes-button:hover,
+#no-button:hover {
     background-color: #0056b3;
     color: white;
 }
