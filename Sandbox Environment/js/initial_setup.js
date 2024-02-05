@@ -21,6 +21,8 @@ savedCoordinates.set("Test", [1600, 1600])
 savedCoordinates.set("Test2", [124, 124])
 savedCoordinates.set("Test3", [124, 924])
 
+export let savedPos = Array.from(savedVariables);
+
 export function createNewPosition(name, key, coordinates) {
     if (name === undefined || key == undefined || coordinates === undefined) {
         window.alert("Arguments missing.");
@@ -30,6 +32,7 @@ export function createNewPosition(name, key, coordinates) {
             savedCoordinates.set(key, coordinates);
             createPositionModal.hide();
             updateBlocklyBlocks();
+            savedPos = Array.from(savedVariables);
         } else {
             window.alert("A variable with the same name already exists.");
         }

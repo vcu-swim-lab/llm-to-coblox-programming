@@ -13,9 +13,11 @@ body {
 
 .blockly-workspace-preview {
     min-height: 200px;
-    height: 300px;
-    width: 300px
+    height: 200px;
+    /* width: 200px; */
 }
+
+/* .workspace-preview-layout {} */
 
 /* Blockly workspace */
 .injectionDiv {

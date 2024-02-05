@@ -318,7 +318,7 @@ function onBlockChange(event) {
 
 export function injectXML(xmlCode) {
 
-    secondWorkspace.clear();
+    //secondWorkspace.clear();
 
     let xmlDoc = parser.parseFromString(xmlCode, 'text/xml');
     Blockly.Xml.domToWorkspace(xmlDoc, secondWorkspace);

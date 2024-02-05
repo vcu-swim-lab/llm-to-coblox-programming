@@ -67,7 +67,7 @@ function requestNewPosition() {
 
     if (positionName !== "") {
         var currentScene = game.scene.getScene(phaserSceneName);
-        var positionKey = positionName.toUpperCase();
+        var positionKey = positionName;//.toUpperCase();
         var positionCoordinate = currentScene.getGripperPosition();
         createNewPosition(positionName, positionKey, positionCoordinate);
     } else {
