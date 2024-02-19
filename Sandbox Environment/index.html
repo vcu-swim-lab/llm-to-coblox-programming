@@ -28,7 +28,7 @@
         <div class="row">
             <div class="language col-md-8 col-sm-12">
                 <div id="blockly-workspace" class="blockly-workspace"></div>
-                <div class="blockly-workspace-preview" id="second-workspace"></div>
+                <!-- <div class="blockly-workspace-preview" id="second-workspace"></div> -->
             </div>
             <div class="simulation col-md-4 col-sm-12">
                 <div class="debugging">
@@ -105,50 +105,63 @@
     </div>
 
     <div class="modal fade" id="start-recording-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content" id="modal">
                 <div class="modal-header">
-                    <h5 class="modal-title">Record instructions for the robot</h5>
+                    <h5 class="modal-title">Record Instructions</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row g-3">
+                    <!-- <form class="row g-3">
                         <h3>Input:</h3>
                         <div class="col-12" id="recording-conversion">
                         </div>
                 </div>
-                </form>
-                <div class="modal-footer">
-                    <div class="container">
-                        <div class="row">
-                            <button type="button" id="start-recording-btn" class="btn btn-primary">Record</button>
+                </form> -->
+                    <div class="output-row">
+                        <div class="output-column">
+                            <div class="speech-card">
+                                <p>Recording...</p>
+                            </div>
+                        </div>
+                        <div class="output-column">
+                            <div class="workstation-card" id="second-workspace">
+                                <!-- <div class="blockly-workspace-preview" id="second-workspace"></div> -->
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="preview-area" id="preview-area">
-                    <!-- <div class="workspace-preview-layout"> -->
-                    <!-- <div class="blockly-workspace-preview" id="second-workspace"> -->
-                    <!-- <p>Would you like to implement this code to the main workspace?</p> -->
+                    <div class="btn-row">
+                        <button type="button" id="start-recording-btn" class="btn btn-primary">Record</button>
+                    </div>
+                    <!-- <div class="row"> -->
                     <!-- </div> -->
+                    <div class="modal-footer">
+                        <div class="container">
+                        </div>
+                    </div>
+                    <div class="preview-area" id="preview-area">
+                        <!-- <div class="workspace-preview-layout"> -->
+                        <!-- <p>Would you like to implement this code to the main workspace?</p> -->
+                        <!-- </div> -->
+                    </div>
+                    <div class="preview-buttons">
+                        <button id="yes-button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
+                        <button id="no-button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                    </div>
                 </div>
-                <div class="preview-buttons">
-                    <button id="yes-button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
-                    <button id="no-button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                </div>
-            </div>
 
-            <xml id="toolbox" style="display: none">
-            </xml>
+                <xml id="toolbox" style="display: none">
+                </xml>
 
-            <xml id="blocks" style="display: none">
-                <block type="custom_start" id="START" x="-250" y="-150"></block>
-                <!-- <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
+                <xml id="blocks" style="display: none">
+                    <block type="custom_start" id="START" x="-250" y="-150"></block>
+                    <!-- <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
                     <block type="pick_object" id="POSITION" x="-250" y="-100"></block>
                     <block type="move_to_position" id="POSITION" x="-250" y="-100"></block>
                     -->
-            </xml>
+                </xml>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- <script src="js/initial_setup.js"></script> -->

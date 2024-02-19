@@ -75,6 +75,57 @@ body {
     position: relative;
 }
 
+.output-column {
+    float: left;
+    width: 50%;
+    height: 300px;
+    padding: 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.output-row {
+    margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.output-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.speech-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 90%;
+}
+
+.workstation-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    /* padding: 16px; */
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 90%;
+}
+
+#second-workspace {
+    width: 100%;
+}
+
+.btn-row {
+    margin: 0 -5px;
+}
+
+.btn-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 #yes-button,
 #no-button {
     padding: 10px 25px;

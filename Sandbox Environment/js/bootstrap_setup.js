@@ -7,6 +7,7 @@ import { createNewPosition, savedCoordinates, savedVariables, phaserSceneName } 
 export const managePositionsModal = bootstrap.Modal.getOrCreateInstance('#delete-positions-modal');
 export const createPositionModal = bootstrap.Modal.getOrCreateInstance('#create-position-modal');
 export const speechTT = bootstrap.Modal.getOrCreateInstance('#start-recording-modal');
+speechTT.show();
 
 var createPositionButton = document.getElementById("create-position-button");
 createPositionButton.addEventListener("click", requestNewPosition);
