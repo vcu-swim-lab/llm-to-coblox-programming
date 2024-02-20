@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sandbox</title>
+    <title>Robot Tasks</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -20,9 +20,9 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <h1>Sandbox</h1>
+            <h1>Robot Tasks</h1>
             <div class="heading-container">
-                <p id="left-thing">Use this space as a playground!</p>
+                <p id="left-thing">Use the blocks provided or your voice to implement tasks for the robot!</p>
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
             <div class="simulation col-md-4 col-sm-12">
                 <div class="debugging">
                     <!-- Debugging -->
-                    <div class="row show-options">
+                    <!-- <div class="row show-options">
                         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                             <input type="checkbox" class="btn-check" id="show-positions-button" autocomplete="off">
                             <label class="btn btn-outline-dark" for="show-positions-button"><b>Show
@@ -45,7 +45,7 @@
                             <label class="btn btn-outline-dark" for="show-collisions-button"><b>Show
                                     Collisions</b></label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- Phaser -->
                 <div class="row">
@@ -104,6 +104,8 @@
         </div>
     </div>
 
+
+
     <div class="modal fade" id="start-recording-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content" id="modal">
@@ -121,17 +123,18 @@
                     <div class="output-row">
                         <div class="output-column">
                             <div class="speech-card">
-                                <p>Recording...</p>
+                                <p id="recording-conversion"></p>
                             </div>
                         </div>
                         <div class="output-column">
-                            <div class="workstation-card" id="second-workspace">
-                                <!-- <div class="blockly-workspace-preview" id="second-workspace"></div> -->
+                            <div class="workstation-card" id="work-area">
+                                <div class="blockly-workspace-preview-two" id="second-workspace"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-row">
+                    <div class="flex-container">
                         <button type="button" id="start-recording-btn" class="btn btn-primary">Record</button>
+                        <button id="yes-button" class="btn btn-success" data-bs-dismiss="modal">Transfer</button>
                     </div>
                     <!-- <div class="row"> -->
                     <!-- </div> -->
@@ -145,8 +148,6 @@
                         <!-- </div> -->
                     </div>
                     <div class="preview-buttons">
-                        <button id="yes-button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
-                        <button id="no-button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
 

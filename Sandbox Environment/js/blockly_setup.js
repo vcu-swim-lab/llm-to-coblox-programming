@@ -4,6 +4,7 @@ import { loadCreatePositionModal } from './bootstrap_setup'
 import { loadPositionsForRemoval } from './bootstrap_setup'
 import { phaserSceneName, savedVariables, savedCoordinates } from './initial_setup';
 import { voiceToText } from './langchain_setup';
+import { speechTT } from './bootstrap_setup';
 /* "Extensions are functions that run on each block of a given type as the block is created." - Blockly */
 
 /* This extension fill the movement position dropdown with default field values. */
@@ -66,18 +67,13 @@ Blockly.defineBlocksWithJsonArray([
     },
     {
         "type": "move_to_position",
-        "message0": "%2 Move robot to %1",
+        "message0": "Move robot to %1",
         "args0": [
             {
                 "type": "input_dummy",
                 "name": "POSITION",
                 "variable": "<somewhere>"
             },
-            {
-                "type": "field_checkbox",
-                "name": "Breakpoint",
-                "checked": false
-            }
         ],
         "inputsInline": false,
         "previousStatement": null,
@@ -90,13 +86,9 @@ Blockly.defineBlocksWithJsonArray([
     /* Custom pick object block */
     {
         "type": "pick_object",
-        "message0": "%1 Pick up object",
+        "message0": "Pick up object",
         "args0": [
-            {
-                "type": "field_checkbox",
-                "name": "Breakpoint",
-                "checked": false
-            }
+
         ],
         "inputsInline": false,
         "previousStatement": null,
@@ -109,13 +101,9 @@ Blockly.defineBlocksWithJsonArray([
     /* Custom release object block */
     {
         "type": "release_object",
-        "message0": "%1 Release object",
+        "message0": "Release object",
         "args0": [
-            {
-                "type": "field_checkbox",
-                "name": "Breakpoint",
-                "checked": false
-            }
+
         ],
         "inputsInline": false,
         "previousStatement": null,
@@ -173,8 +161,21 @@ const toolbox = {
         },
     ]
 }
+
+// speechTT.show();
 const secondDiv = document.getElementById('second-workspace');
-const secondWorkspace = Blockly.inject(secondDiv, {
+export const secondWorkspace = Blockly.inject(secondDiv, {
+    zoom: {
+        controls: true,
+    },
+    move: {
+        scrollbars: {
+            horizontal: true,
+            vertical: true,
+        },
+        drag: true,
+    },
+    trashcan: true
 });
 
 const blocklyDiv = document.getElementById('blockly-workspace');

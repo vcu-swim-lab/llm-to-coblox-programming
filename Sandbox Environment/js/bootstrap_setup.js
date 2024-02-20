@@ -3,11 +3,11 @@ import bootstrap from '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import { game } from './phaser_setup'
 import { removeBlocksWithPosition } from './blockly_setup.js';
 import { createNewPosition, savedCoordinates, savedVariables, phaserSceneName } from './initial_setup.js';
+import $ from "jquery";
 
 export const managePositionsModal = bootstrap.Modal.getOrCreateInstance('#delete-positions-modal');
 export const createPositionModal = bootstrap.Modal.getOrCreateInstance('#create-position-modal');
 export const speechTT = bootstrap.Modal.getOrCreateInstance('#start-recording-modal');
-speechTT.show();
 
 var createPositionButton = document.getElementById("create-position-button");
 createPositionButton.addEventListener("click", requestNewPosition);
