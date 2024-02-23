@@ -11,11 +11,13 @@
   "dependencies": {
     "blockly": "^10.2.2",
     "bootstrap": "^5.3.2",
-    "dotenv": "^16.4.5",
     "jquery": "^3.7.1",
     "langchain": "^0.0.177",
     "phaser": "^3.60.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1"
   }
 }

@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 module.exports = {
 
     entry: ["./Sandbox\ Environment/js/bootstrap_setup.js", "./Sandbox\ Environment/js/blockly_setup.js",
@@ -9,5 +10,8 @@ module.exports = {
         hints: false,
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
-    }
+    },
+    plugins: [
+        new Dotenv()
+    ]
 };
