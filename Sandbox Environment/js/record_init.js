@@ -6,6 +6,8 @@ import { savedVariables } from './initial_setup';
 import { PromptTemplate } from "langchain/prompts";
 import { savedPos } from './initial_setup';
 
+require('dotenv').config()
+
 /*const template = "Consider you're an assistant robot, your job is to locate, pick up, move, and release objects to specific coordinates.\
     \n{prompt}\
     \nThese are methods that you're provided with:\
@@ -43,7 +45,7 @@ if the input has an unavailable position, say invalid in the output.");
 let audio_transcript = "";
 
 const chat = new ChatOpenAI({
-    openAIApiKey: "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",
+    openAIApiKey: process.env.API_KEY,
     temperature: 0.2
 });
 

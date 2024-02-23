@@ -1,4 +1,5 @@
 node_modules
-*.Ds_Store
+*.DS_Store
 *main.js
 *main.js.LICENSE.txt
+.env
