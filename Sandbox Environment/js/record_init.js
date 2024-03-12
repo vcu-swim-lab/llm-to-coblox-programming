@@ -43,7 +43,7 @@ if the input has an unavailable position, say invalid in the output.");
 let audio_transcript = "";
 
 const chat = new ChatOpenAI({
-  openAIApiKey: API_KEY,
+  openAIApiKey: process.env.API_KEY,
   temperature: 0.2
 });
 
