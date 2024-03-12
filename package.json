@@ -4,7 +4,8 @@
   "description": "Handling all of the dependencies for llm to robot project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci"
   },
   "author": "Stephen Nocera",
   "license": "ISC",
@@ -19,5 +20,9 @@
   },
   "devDependencies": {
     "dotenv-webpack": "^8.0.1"
+  },
+  "engines": {
+    "node": "20.11.1",
+    "npm": "10.2.4"
   }
 }
