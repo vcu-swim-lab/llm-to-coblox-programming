@@ -43,49 +43,49 @@ if the input has an unavailable position, say invalid in the output.");
 let audio_transcript = "";
 
 const chat = new ChatOpenAI({
-    openAIApiKey: process.env.API_KEY,
-    temperature: 0.2
+  openAIApiKey: API_KEY,
+  temperature: 0.2
 });
 
 export function speechtt() {
-    let speech = true;
-    window.SpeechRecognition = window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    //recognition.interimResults = true;
+  let speech = true;
+  window.SpeechRecognition = window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  //recognition.interimResults = true;
 
-    recognition.addEventListener('result', e => {
-        const transcript = e.results[0][0].transcript;
-        const code = document.getElementById("recording-conversion");
-        code.innerHTML = transcript;
-        audio_transcript = transcript;
-        recognition.stop();
-        speech = false;
-        sendTranscriptToAI();
-        // speechTT.hide();
+  recognition.addEventListener('result', e => {
+    const transcript = e.results[0][0].transcript;
+    const code = document.getElementById("recording-conversion");
+    code.innerHTML = transcript;
+    audio_transcript = transcript;
+    recognition.stop();
+    speech = false;
+    sendTranscriptToAI();
+    // speechTT.hide();
 
-    })
-    if (speech) {
-        recognition.start();
-    }
+  })
+  if (speech) {
+    recognition.start();
+  }
 }
 
 async function sendTranscriptToAI() {
-    console.log(savedPos);
-    let formattedTemplate = await template.format({ positions: savedPos });
-    const response3 = await chat.generate([
-        [
-            new SystemMessage(
-                formattedTemplate
-            ),
-            new HumanMessage(
-                audio_transcript
-            ),
-        ],
-    ]);
+  console.log(savedPos);
+  let formattedTemplate = await template.format({ positions: savedPos });
+  const response3 = await chat.generate([
+    [
+      new SystemMessage(
+        formattedTemplate
+      ),
+      new HumanMessage(
+        audio_transcript
+      ),
+    ],
+  ]);
 
-    console.log(response3.generations[0][0].text);
+  console.log(response3.generations[0][0].text);
 
-    injectXML(response3.generations[0][0].text);
+  injectXML(response3.generations[0][0].text);
 
 
 }
