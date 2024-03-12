@@ -12,11 +12,11 @@ export const speechTT = bootstrap.Modal.getOrCreateInstance('#start-recording-mo
 var createPositionButton = document.getElementById("create-position-button");
 createPositionButton.addEventListener("click", requestNewPosition);
 
-var showPositionsButton = document.getElementById("show-positions-button");
-showPositionsButton.addEventListener("click", toggleShowPositions);
+// var showPositionsButton = document.getElementById("show-positions-button");
+// showPositionsButton.addEventListener("click", toggleShowPositions);
 
-var showDirectionsButton = document.getElementById("show-directions-button");
-showDirectionsButton.addEventListener("click", toggleShowDirections);
+// var showDirectionsButton = document.getElementById("show-directions-button");
+// showDirectionsButton.addEventListener("click", toggleShowDirections);
 
 export function loadCreatePositionModal() {
     createPositionModal.show();
