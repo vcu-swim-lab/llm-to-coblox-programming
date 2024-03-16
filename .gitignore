@@ -4,3 +4,7 @@ node_modules
 *main.js.LICENSE.txt
 /dist
 .env
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

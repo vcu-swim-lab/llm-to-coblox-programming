@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config()
 
+console.log(process.env.API_KEY)
+
 const PORT = 3000;
 const ROOT_DIR = './'; // Directory containing your webpack output
 
