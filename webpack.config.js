@@ -12,6 +12,9 @@ module.exports = {
         maxAssetSize: 512000
     },
     plugins: [
-        new Dotenv()
+        new Dotenv({
+            safe: false,
+        })
+
     ]
 };
