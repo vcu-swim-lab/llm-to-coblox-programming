@@ -8,3 +8,4 @@ node_modules
 .flaskenv*
 !.env.project
 !.env.vault
+api_key.js
