@@ -6,6 +6,7 @@ import { savedVariables } from './initial_setup';
 import { PromptTemplate } from "langchain/prompts";
 import { savedPos } from './initial_setup';
 //import API_KEY from './api_key';
+require('dotenv').config()
 
 /*const template = "Consider you're an assistant robot, your job is to locate, pick up, move, and release objects to specific coordinates.\
     \n{prompt}\
