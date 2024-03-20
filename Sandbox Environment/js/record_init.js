@@ -5,8 +5,7 @@ import { speechTT } from './bootstrap_setup';
 import { savedVariables } from './initial_setup';
 import { PromptTemplate } from "langchain/prompts";
 import { savedPos } from './initial_setup';
-//import API_KEY from './api_key';
-require('dotenv').config()
+
 
 /*const template = "Consider you're an assistant robot, your job is to locate, pick up, move, and release objects to specific coordinates.\
     \n{prompt}\
@@ -45,7 +44,7 @@ if the input has an unavailable position, say invalid in the output.");
 let audio_transcript = "";
 
 const chat = new ChatOpenAI({
-  openAIApiKey: process.env.API_KEY,
+  openAIApiKey: process.env.OPENAI_KEY,
   temperature: 0.2
 });
 

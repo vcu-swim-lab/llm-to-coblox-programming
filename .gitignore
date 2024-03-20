@@ -5,7 +5,4 @@ node_modules
 /dist
 .env
 .env*
-.flaskenv*
-!.env.project
-!.env.vault
-api_key.js
+
