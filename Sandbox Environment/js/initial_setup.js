@@ -2,6 +2,7 @@ export const phaserSceneName = "Sandbox"
 
 import { updateBlocklyBlocks } from './blockly_setup'
 import { createPositionModal } from './bootstrap_setup';
+import { game } from './phaser_setup';
 
 /* savedVariables saves the position names created by the user.
 In the example below, "Home" is the variable name, and "HOME_POSITION"
@@ -21,6 +22,7 @@ savedCoordinates.set("Test", [1600, 1600])
 savedCoordinates.set("Test2", [124, 124])
 savedCoordinates.set("Test3", [124, 924])
 
+export let savedCoords = Array.from(savedCoordinates);
 export let savedPos = Array.from(savedVariables);
 
 export function createNewPosition(name, key, coordinates) {
@@ -33,8 +35,16 @@ export function createNewPosition(name, key, coordinates) {
             createPositionModal.hide();
             updateBlocklyBlocks();
             savedPos = Array.from(savedVariables);
+            savedCoords = Array.from(savedCoordinates);
+            var currentScene = game.scene.getScene(phaserSceneName);
+            currentScene.drawCircles(savedCoordinates);
+            currentScene.drawLabels(savedCoordinates);
         } else {
             window.alert("A variable with the same name already exists.");
         }
     }
+}
+
+export function getSavedCoords() {
+    return savedCoords;
 }

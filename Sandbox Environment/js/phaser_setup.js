@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { blocklyWorkspace, getBlocklyPositions } from './blockly_setup'
-import { phaserSceneName, savedCoordinates } from './initial_setup';
+import { phaserSceneName, savedCoordinates, getSavedCoords } from './initial_setup';
 
 export class RobotScene extends Phaser.Scene {
     constructor() {
@@ -10,7 +10,7 @@ export class RobotScene extends Phaser.Scene {
 
         /* Used in path visualization */
         this.isPositioning = false;
-        this.showCircles = false;
+        this.showCircles = true;
         this.showArrows = false;
         this.circleRadius = 64;
         this.positionLabels = [];
@@ -71,6 +71,9 @@ export class RobotScene extends Phaser.Scene {
             this.gripper.x = this.input.activePointer.worldX;
             this.gripper.y = this.input.activePointer.worldY;
         }
+
+        //this.drawCircles();
+        //this.drawLabels();
     }
 
     getGripperPosition() {
@@ -144,18 +147,20 @@ export class RobotScene extends Phaser.Scene {
                 this.executeAnimation();
             }
         } else {
-            this.drawCircles();
-            this.drawLabels();
-            this.drawArrows();
+            // this.drawCircles();
+            // this.drawLabels();
+            // this.drawArrows();
             console.log('Phaser: Executed all block animations.');
         }
     }
 
-    drawCircles() {
+    drawCircles(pos) {
         if (this.showCircles) {
             /* Get ordered positions of movement blocks
             attached to starting block */
-            this.positionValues = getBlocklyPositions();
+            //this.positionValues = getBlocklyPositions();
+            this.positionValues = Array.from(pos);
+            // console.log(this.positionValues);
 
             /* Clear previous drawings */
             this.positionCircles.forEach(circle => circle.destroy());
@@ -174,30 +179,30 @@ export class RobotScene extends Phaser.Scene {
                 this.input.setDraggable(positionCircle);
                 this.positionCircles.push(positionCircle)
 
-                positionCircle.on('drag', function (p, x, y) {
+                /*positionCircle.on('drag', function (p, x, y) {
                     this.isPositioning = true;
 
-                    /* Updating elements position and values */
-                    positionCircle.x = x;
-                    positionCircle.y = y;
-                    this.positionLabels[i].x = x;
-                    this.positionLabels[i].y = y - (this.circleRadius * 1.45);
-                    this.gripper.x = positionCircle.x;
-                    this.gripper.y = positionCircle.y;
-                    this.positionValues[i][1][0] = x;
-                    this.positionValues[i][1][1] = y;
+                    // Updating elements position and values
+                positionCircle.x = x;
+                positionCircle.y = y;
+                this.positionLabels[i].x = x;
+                this.positionLabels[i].y = y - (this.circleRadius * 1.45);
+                this.gripper.x = positionCircle.x;
+                this.gripper.y = positionCircle.y;
+                this.positionValues[i][1][0] = x;
+                this.positionValues[i][1][1] = y;
 
-                    this.children.bringToTop(positionCircle);
-                    //positionCircle.setFillStyle(0xff3e1c);
-                    this.drawArrows();
-                    this.drawLabels();
-                }, this);
+                this.children.bringToTop(positionCircle);
+                //positionCircle.setFillStyle(0xff3e1c);
+                this.drawArrows();
+                this.drawLabels();
+            }, this);*/
 
                 positionCircle.on('dragend', function () {
                     this.isPositioning = false;
-                    this.drawCircles();
+                    //this.drawCircles();
                     this.drawArrows();
-                    this.drawLabels();
+                    //this.drawLabels();
                 }, this);
             }
         }
@@ -209,11 +214,11 @@ export class RobotScene extends Phaser.Scene {
         }
     }
 
-    drawLabels() {
+    drawLabels(pos) {
         if (this.showCircles) {
             /* Get ordered positions of movement blocks
             attached to starting block */
-            this.positionValues = getBlocklyPositions();
+            this.positionValues = Array.from(pos);
 
             /* Clear previous drawings */
             this.positionLabels.forEach(label => label.destroy());

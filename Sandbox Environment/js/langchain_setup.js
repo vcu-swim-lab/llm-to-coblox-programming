@@ -2,7 +2,6 @@ import { speechTT } from "./bootstrap_setup";
 import { speechtt } from "./record_init";
 import { secondWorkspace } from './blockly_setup.js';
 import Blockly from 'blockly'
-import $ from "jquery";
 
 // const secondDiv = document.getElementById('second-workspace');
 // const workArea = document.getElementById('work-area');

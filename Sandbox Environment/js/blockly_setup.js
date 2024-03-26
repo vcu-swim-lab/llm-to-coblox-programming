@@ -310,8 +310,8 @@ function onBlockChange(event) {
         var currentScene = game.scene.getScene(phaserSceneName);
 
         if (currentScene) {
-            currentScene.drawCircles();
-            currentScene.drawLabels();
+            currentScene.drawCircles(savedCoordinates);
+            currentScene.drawLabels(savedCoordinates);
             currentScene.drawArrows();
         }
     }
