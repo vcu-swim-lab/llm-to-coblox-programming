@@ -48,30 +48,57 @@ const chat = new ChatOpenAI({
   temperature: 0.2
 });
 
-export function speechtt() {
-  let speech = true;
-  window.SpeechRecognition = window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  //recognition.interimResults = true;
+window.SpeechRecognition = window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.continuous = true;
+let speech = false;
 
-  recognition.addEventListener('result', e => {
-    const transcript = e.results[0][0].transcript;
-    const code = document.getElementById("recording-conversion");
-    code.innerHTML = transcript;
-    audio_transcript = transcript;
+export function speechtt() {
+
+  // recognition.interimResults = true;
+
+
+  if (speech) {
+    recognition.onend = null;
     recognition.stop();
     speech = false;
-    sendTranscriptToAI();
-    // speechTT.hide();
 
-  })
-  if (speech) {
+    recognition.onresult = (event) => {
+      const code = document.getElementById("recording-conversion");
+      let transcript = "";
+      for (let i = 0; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+        code.innerHTML = transcript;
+        audio_transcript = transcript;
+      }
+      console.log(transcript)
+    }
+
+    sendTranscriptToAI();
+  } else {
+    recognition.onend = onEnd;
+    console.log(recognition)
     recognition.start();
+    speech = true;
   }
 }
 
+function onEnd() {
+  console.log('Speech recognition has stopped. Starting again ...');
+  recognition.start();
+  recognition.stop();
+}
+
+recognition.addEventListener('result', e => {
+  const transcript = e.results[0][0].transcript;
+  // recognition.stop();
+  // speech = false;
+  // sendTranscriptToAI();
+  // speechTT.hide();
+
+})
+
 async function sendTranscriptToAI() {
-  console.log(savedPos);
   let formattedTemplate = await template.format({ positions: savedPos });
   const response3 = await chat.generate([
     [
