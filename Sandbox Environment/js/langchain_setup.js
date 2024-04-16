@@ -27,5 +27,5 @@ var speechTranscript = document.getElementById("recording-conversion");
 
 function startRecordingSpeech() {
     speechtt();
-    speechTranscript.innerHTML = "Recording...";
+    //speechTranscript.innerHTML = "Recording...";
 }

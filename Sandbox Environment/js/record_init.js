@@ -55,6 +55,7 @@ let speech = false;
 
 export function speechtt() {
 
+  const recordbtn = document.getElementById("start-recording-btn");
   // recognition.interimResults = true;
 
 
@@ -73,9 +74,10 @@ export function speechtt() {
       }
       console.log(transcript)
     }
-
+    recordbtn.innerHTML = "Record"
     sendTranscriptToAI();
   } else {
+    recordbtn.innerHTML = "Stop"
     recognition.onend = onEnd;
     console.log(recognition)
     recognition.start();
@@ -84,9 +86,7 @@ export function speechtt() {
 }
 
 function onEnd() {
-  console.log('Speech recognition has stopped. Starting again ...');
   recognition.start();
-  recognition.stop();
 }
 
 recognition.addEventListener('result', e => {
